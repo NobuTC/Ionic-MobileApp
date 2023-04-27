@@ -1,0 +1,7 @@
+{
+  "name": "ToDoMobileApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
