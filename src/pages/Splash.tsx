@@ -1,11 +1,12 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonText } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonSpinner } from '@ionic/react';
 import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
-//import './Page.css';
+import './Splash.css';
 
 const Splash: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
+
+  //Tähän pitää vielä rakentaa setti, joka redirectaa etusivulle.
 
   return (
     <IonPage>
@@ -19,15 +20,15 @@ const Splash: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
-        <IonText>
-            <h1>TÄHÄN TULEE SPLASH SIVU</h1>
-        </IonText>
+        <div className="flex-center">
+            Welcome, loading your page
+            <IonSpinner name="dots"></IonSpinner>
+        </div>
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">{name}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name={name} />
       </IonContent>
     </IonPage>
   );
