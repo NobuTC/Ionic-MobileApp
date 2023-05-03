@@ -3,6 +3,8 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import Page from './pages/Page';
+import Splash from './pages/Splash'; //En tiedä miks tä antaa erroria. Reitti toimii kuitenkin.
+import Contact from './pages/Contact';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -37,6 +39,12 @@ const App: React.FC = () => {
             </Route>
             <Route path="/page/:name" exact={true}>
               <Page />
+            </Route>
+            <Route path="/Splash" exact={true}>
+              <Splash />
+            </Route>
+            <Route path="/Contact" exact={true}>
+              <Contact  />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
