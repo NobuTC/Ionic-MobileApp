@@ -1,6 +1,6 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonTextarea, IonListHeader, IonLabel } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonTextarea, IonListHeader, IonLabel, IonButton } from '@ionic/react';
 import { useParams } from 'react-router';
-//import './Page.css';
+import './contact.css';
 
 const Contact: React.FC = () => {
 
@@ -18,23 +18,28 @@ const Contact: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
+        <div className="flex-center">
         <IonList>
             <IonListHeader>
                 <IonLabel>Contact Us</IonLabel>
             </IonListHeader>
             <IonItem>
-                <IonInput label="Outline input" labelPlacement="floating" fill="solid" placeholder="Enter text"></IonInput>
+                <IonInput label="Name" labelPlacement="floating" fill="solid" placeholder="Enter text"></IonInput>
             </IonItem>
             <IonItem>
-                <IonInput label="Outline input" labelPlacement="floating" fill="solid" placeholder="Enter text"></IonInput>
+                <IonInput label="Email" type="email" labelPlacement="floating" fill="solid" placeholder="Enter text"></IonInput>
             </IonItem>
             <IonItem>
-                <IonInput label="Outline input" labelPlacement="floating" fill="solid" placeholder="Enter text"></IonInput>
+                <IonInput label="Phone number" type="tel" labelPlacement="floating" fill="solid" placeholder="Enter text"></IonInput>
             </IonItem>
             <IonItem>
-            <IonTextarea label="Solid textarea" labelPlacement="floating" fill="solid" placeholder="Enter text"></IonTextarea>
+                <IonTextarea label="Message" labelPlacement="floating" fill="solid" placeholder="Enter text"></IonTextarea>
+            </IonItem>
+            <IonItem>
+                <IonButton color="primary" className="button" expand="block">Submit</IonButton>
             </IonItem>
         </IonList>
+        </div>
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">{name}</IonTitle>
