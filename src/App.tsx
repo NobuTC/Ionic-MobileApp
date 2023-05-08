@@ -9,7 +9,7 @@ import { Redirect, Route } from "react-router-dom";
 import Menu from "./components/Menu";
 import LogIn from "./pages/LogIn";
 import Page from "./pages/Page";
-import Splash from "./pages/Splash"; //En tiedä miks tä antaa erroria. Reitti toimii kuitenkin.
+import Splash from "./pages/Splash";
 import Contact from "./pages/Contact";
 
 /* Core CSS required for Ionic components to work properly */
