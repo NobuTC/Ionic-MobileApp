@@ -22,37 +22,45 @@ import {
   paperPlaneSharp,
 } from "ionicons/icons";
 import "./Menu.css";
+import LogIn from "../pages/LogIn";
+import CreateAccount from "../pages/CreateAccount";
+import Contact from "../pages/Contact";
 
 interface AppPage {
   url: string;
   iosIcon: string;
   mdIcon: string;
   title: string;
+  component: React.FC;
 }
 
-const appPages: AppPage[] = [
+export const appPages: AppPage[] = [
   {
     title: "Login",
-    url: "/page/login",
+    url: "login",
+    component: LogIn,
     iosIcon: mailOutline,
     mdIcon: mailSharp,
   },
   {
-    title: "Create Account",
-    url: "/page/create-account",
+    title: "Sign up",
+    url: "create-account",
+    component: CreateAccount,
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
   },
   {
     title: "Contact",
-    url: "/page/contact",
+    url: "contact",
     iosIcon: heartOutline,
+    component: Contact,
     mdIcon: heartSharp,
   },
   {
     title: "Todo List",
-    url: "/page/Archived",
+    url: "archived",
     iosIcon: archiveOutline,
+    component: Contact, //laitetaan lindan todo
     mdIcon: archiveSharp,
   },
 ];
@@ -72,7 +80,7 @@ const Menu: React.FC = () => {
                   className={
                     location.pathname === appPage.url ? "selected" : ""
                   }
-                  routerLink={appPage.url}
+                  routerLink={`/page/` + appPage.url}
                   routerDirection="none"
                   lines="none"
                   detail={false}

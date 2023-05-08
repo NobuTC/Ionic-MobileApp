@@ -11,11 +11,11 @@ import "./LogIn.css";
 import { useState } from "react";
 
 const LogIn: React.FC = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function loginUser() {
-    console.log(username, password);
+    console.log(email, password);
   }
 
   return (
@@ -27,8 +27,8 @@ const LogIn: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         <IonInput
-          placeholder="Username"
-          onIonChange={(e: any) => setUsername(e.target.value)}
+          placeholder="Email"
+          onIonChange={(e: any) => setEmail(e.target.value)}
         />
         <IonInput
           placeholder="Password"
