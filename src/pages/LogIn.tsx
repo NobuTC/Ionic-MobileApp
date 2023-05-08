@@ -18,7 +18,7 @@ const LogIn: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
-  let history = useHistory();
+  const history = useHistory();
 
   const myUser = useContext(UserContext);
 
