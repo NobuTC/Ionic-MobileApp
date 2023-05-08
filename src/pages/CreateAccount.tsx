@@ -6,17 +6,42 @@ import {
   IonTitle,
   IonToolbar,
   IonInput,
+  IonItem,
 } from "@ionic/react";
 import "./CreateAccount.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../App";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useHistory } from "react-router";
 
 const CreateAccount: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isError, setIsError] = useState(false);
+  const history = useHistory();
 
-  function loginUser() {
-    console.log(email, password);
-  }
+  const myUser = useContext(UserContext);
+
+  const whenClickOnSignUpButton = () => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        setIsError(false);
+        if (user && myUser?.setIsLoggedIn) {
+          myUser.setIsLoggedIn(true);
+          console.log("logged in", user);
+
+          // doc: https://v5.reactrouter.com/web/example/auth-workflow
+          history.replace("/");
+        }
+      })
+      .catch((error) => {
+        setIsError(true);
+        console.log("something went wrong", error.code);
+      });
+  };
 
   return (
     <IonPage>
@@ -34,8 +59,12 @@ const CreateAccount: React.FC = () => {
           placeholder="Password"
           onIonChange={(e: any) => setPassword(e.target.value)}
         />
-
-        <IonButton onClick={loginUser}>Sign up</IonButton>
+        {isError && (
+          <IonItem>
+            <p>Error: try longer password and proper email!</p>
+          </IonItem>
+        )}
+        <IonButton onClick={whenClickOnSignUpButton}>Sign up</IonButton>
       </IonContent>
     </IonPage>
   );

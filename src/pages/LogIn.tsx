@@ -6,17 +6,41 @@ import {
   IonTitle,
   IonToolbar,
   IonInput,
+  IonItem,
 } from "@ionic/react";
 import "./LogIn.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { UserContext } from "../App";
+import { useHistory } from "react-router";
 
 const LogIn: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isError, setIsError] = useState(false);
+  let history = useHistory();
 
-  function loginUser() {
-    console.log(email, password);
-  }
+  const myUser = useContext(UserContext);
+
+  const whenClickOnLoginButton = () => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        setIsError(false);
+        if (user && myUser?.setIsLoggedIn) {
+          myUser.setIsLoggedIn(true);
+          console.log("logged in", user);
+          history.replace("/");
+        }
+      })
+      .catch((error) => {
+        // [TODO] save to state
+        setIsError(true);
+        console.log("something went wrong", error);
+      });
+  };
 
   return (
     <IonPage>
@@ -34,8 +58,12 @@ const LogIn: React.FC = () => {
           placeholder="Password"
           onIonChange={(e: any) => setPassword(e.target.value)}
         />
-
-        <IonButton onClick={loginUser}>Sign in</IonButton>
+        {isError && (
+          <IonItem>
+            <p>Error: Try again! </p>
+          </IonItem>
+        )}
+        <IonButton onClick={whenClickOnLoginButton}>Sign in</IonButton>
       </IonContent>
     </IonPage>
   );

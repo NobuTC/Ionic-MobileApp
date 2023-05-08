@@ -25,6 +25,8 @@ import "./Menu.css";
 import LogIn from "../pages/LogIn";
 import CreateAccount from "../pages/CreateAccount";
 import Contact from "../pages/Contact";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 interface AppPage {
   url: string;
@@ -32,6 +34,7 @@ interface AppPage {
   mdIcon: string;
   title: string;
   component: React.FC;
+  hideOnLogin?: boolean;
 }
 
 export const appPages: AppPage[] = [
@@ -41,6 +44,7 @@ export const appPages: AppPage[] = [
     component: LogIn,
     iosIcon: mailOutline,
     mdIcon: mailSharp,
+    hideOnLogin: true,
   },
   {
     title: "Sign up",
@@ -48,6 +52,7 @@ export const appPages: AppPage[] = [
     component: CreateAccount,
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
+    hideOnLogin: true,
   },
   {
     title: "Contact",
@@ -66,6 +71,7 @@ export const appPages: AppPage[] = [
 ];
 const Menu: React.FC = () => {
   const location = useLocation();
+  const myUser = useContext(UserContext);
 
   return (
     <IonMenu contentId="main" type="overlay">
@@ -74,6 +80,7 @@ const Menu: React.FC = () => {
           <IonListHeader>Todo App</IonListHeader>
           <IonNote>Welcome to ToDo App</IonNote>
           {appPages.map((appPage, index) => {
+            if (myUser?.isLoggedIn && appPage.hideOnLogin) return null;
             return (
               <IonMenuToggle key={index} autoHide={false}>
                 <IonItem
