@@ -13,6 +13,8 @@ An Ionic Todo App in React
 
 - Login screen
 - Registration
+- Contact
+- Splash page
 
 ## Documentation
 
