@@ -11,6 +11,7 @@ import LogIn from "./pages/LogIn";
 import Page from "./pages/Page";
 import Splash from "./pages/Splash";
 import Contact from "./pages/Contact";
+import CreateAccount from "./pages/CreateAccount";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";

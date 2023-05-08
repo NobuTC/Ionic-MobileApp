@@ -8,9 +8,10 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { useParams } from "react-router";
-import ExploreContainer from "../components/ExploreContainer";
 import "./Page.css";
 import LogIn from "./LogIn";
+import CreateAccount from "./CreateAccount";
+import Contact from "./Contact";
 
 const Page: React.FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -33,7 +34,9 @@ const Page: React.FC = () => {
             <IonTitle size="large">{name}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        {name === "Login" && <LogIn />}
+        {name === "login" && <LogIn />}
+        {name === "create-account" && <CreateAccount />}
+        {name === "contact" && <Contact />}
       </IonContent>
     </IonPage>
   );

@@ -14,17 +14,12 @@ import { useLocation } from "react-router-dom";
 import {
   archiveOutline,
   archiveSharp,
-  bookmarkOutline,
   heartOutline,
   heartSharp,
   mailOutline,
   mailSharp,
   paperPlaneOutline,
   paperPlaneSharp,
-  trashOutline,
-  trashSharp,
-  warningOutline,
-  warningSharp,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -38,44 +33,29 @@ interface AppPage {
 const appPages: AppPage[] = [
   {
     title: "Login",
-    url: "/page/Login",
+    url: "/page/login",
     iosIcon: mailOutline,
     mdIcon: mailSharp,
   },
   {
-    title: "Outbox",
-    url: "/page/Outbox",
+    title: "Create Account",
+    url: "/page/create-account",
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
   },
   {
-    title: "Favorites",
-    url: "/page/Favorites",
+    title: "Contact",
+    url: "/page/contact",
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },
   {
-    title: "Archived",
+    title: "Todo List",
     url: "/page/Archived",
     iosIcon: archiveOutline,
     mdIcon: archiveSharp,
   },
-  {
-    title: "Trash",
-    url: "/page/Trash",
-    iosIcon: trashOutline,
-    mdIcon: trashSharp,
-  },
-  {
-    title: "Spam",
-    url: "/page/Spam",
-    iosIcon: warningOutline,
-    mdIcon: warningSharp,
-  },
 ];
-
-const labels = ["Family", "Friends", "Notes", "Work", "Travel", "Reminders"];
-
 const Menu: React.FC = () => {
   const location = useLocation();
 
@@ -83,8 +63,8 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonListHeader>Todo App</IonListHeader>
+          <IonNote>Welcome to ToDo App</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -108,16 +88,6 @@ const Menu: React.FC = () => {
               </IonMenuToggle>
             );
           })}
-        </IonList>
-
-        <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon aria-hidden="true" slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))}
         </IonList>
       </IonContent>
     </IonMenu>
