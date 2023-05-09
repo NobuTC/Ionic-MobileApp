@@ -62,6 +62,7 @@ const CreateAccount: React.FC = () => {
         {isError && (
           <IonItem>
             <p>Something went wrong!</p>
+            <p>Try again.</p>
           </IonItem>
         )}
         <IonButton onClick={whenClickOnSignUpButton}>Sign up</IonButton>
