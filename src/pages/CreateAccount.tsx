@@ -61,7 +61,7 @@ const CreateAccount: React.FC = () => {
         />
         {isError && (
           <IonItem>
-            <p>Password is too short! Must be 6 or more characters!</p>
+            <p>Something went wrong!</p>
           </IonItem>
         )}
         <IonButton onClick={whenClickOnSignUpButton}>Sign up</IonButton>
