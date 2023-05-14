@@ -13,6 +13,8 @@ import { useState, useContext } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from "../App";
 import { useHistory } from "react-router";
+import CreateAccount from "./CreateAccount";
+import Contact from "./Contact";
 
 const LogIn: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -42,6 +44,14 @@ const LogIn: React.FC = () => {
       });
   };
 
+  const whenClickOnSignUpButton = () => {
+    history.push("/page/create-account");
+  };
+
+  const whenClickOnContactUsButton = () => {
+    history.push("/page/contact");
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -64,6 +74,9 @@ const LogIn: React.FC = () => {
           </IonItem>
         )}
         <IonButton onClick={whenClickOnLoginButton}>Sign in</IonButton>
+        <IonButton onClick={whenClickOnSignUpButton}>Sign up</IonButton>
+
+        <IonButton onClick={whenClickOnContactUsButton}>Contact Us</IonButton>
       </IonContent>
     </IonPage>
   );

@@ -27,6 +27,7 @@ import CreateAccount from "../pages/CreateAccount";
 import Contact from "../pages/Contact";
 import { useContext } from "react";
 import { UserContext } from "../App";
+import LogOut from "../pages/Logout";
 
 interface AppPage {
   url: string;
@@ -35,6 +36,7 @@ interface AppPage {
   title: string;
   component: React.FC;
   hideOnLogin?: boolean;
+  hideWhenUserIsNotLoggedIn?: boolean;
 }
 
 export const appPages: AppPage[] = [
@@ -68,6 +70,14 @@ export const appPages: AppPage[] = [
     component: Contact, //laitetaan lindan todo
     mdIcon: archiveSharp,
   },
+  {
+    title: "Log out",
+    url: "logout",
+    iosIcon: archiveOutline,
+    component: LogOut,
+    mdIcon: archiveSharp,
+    hideWhenUserIsNotLoggedIn: true,
+  },
 ];
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -80,7 +90,11 @@ const Menu: React.FC = () => {
           <IonListHeader>Todo App</IonListHeader>
           <IonNote>Welcome to ToDo App</IonNote>
           {appPages.map((appPage, index) => {
-            if (myUser?.isLoggedIn && appPage.hideOnLogin) return null;
+            if (
+              (myUser?.isLoggedIn && appPage.hideOnLogin) ||
+              (!myUser?.isLoggedIn && appPage.hideWhenUserIsNotLoggedIn)
+            )
+              return null;
             return (
               <IonMenuToggle key={index} autoHide={false}>
                 <IonItem
