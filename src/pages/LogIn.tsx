@@ -6,15 +6,13 @@ import {
   IonTitle,
   IonToolbar,
   IonInput,
-  IonItem,
+  IonText,
 } from "@ionic/react";
 import "./LogIn.css";
 import { useState, useContext } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from "../App";
 import { useHistory } from "react-router";
-import CreateAccount from "./CreateAccount";
-import Contact from "./Contact";
 
 const LogIn: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -62,16 +60,18 @@ const LogIn: React.FC = () => {
       <IonContent className="ion-padding">
         <IonInput
           placeholder="Email"
+          type="email"
           onIonChange={(e: any) => setEmail(e.target.value)}
         />
         <IonInput
+          type="password"
           placeholder="Password"
           onIonChange={(e: any) => setPassword(e.target.value)}
         />
         {isError && (
-          <IonItem>
-            <p>Error: Try again! </p>
-          </IonItem>
+          <IonText color="danger">
+            <p>Incorrect password! </p>
+          </IonText>
         )}
         <IonButton onClick={whenClickOnLoginButton}>Sign in</IonButton>
         <IonButton onClick={whenClickOnSignUpButton}>Sign up</IonButton>

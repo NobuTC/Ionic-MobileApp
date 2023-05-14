@@ -6,7 +6,7 @@ import {
   IonTitle,
   IonToolbar,
   IonInput,
-  IonItem,
+  IonText,
 } from "@ionic/react";
 import "./CreateAccount.css";
 import { useContext, useState } from "react";
@@ -53,17 +53,18 @@ const CreateAccount: React.FC = () => {
       <IonContent className="ion-padding">
         <IonInput
           placeholder="Email"
+          type="email"
           onIonChange={(e: any) => setEmail(e.target.value)}
         />
         <IonInput
+          type="password"
           placeholder="Password"
           onIonChange={(e: any) => setPassword(e.target.value)}
         />
         {isError && (
-          <IonItem>
-            <p>Something went wrong!</p>
-            <p>Try again.</p>
-          </IonItem>
+          <IonText color="danger">
+            <p>Password is too short! Must be 6 or more characters!</p>
+          </IonText>
         )}
         <IonButton onClick={whenClickOnSignUpButton}>Sign up</IonButton>
       </IonContent>
