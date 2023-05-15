@@ -14,6 +14,7 @@ import { useLocation } from "react-router-dom";
 import {
   archiveOutline,
   archiveSharp,
+  listCircleOutline,
   mailOutline,
   mailSharp,
   paperPlaneOutline,
@@ -27,6 +28,7 @@ import Contact from "../pages/Contact";
 import { useContext } from "react";
 import { UserContext } from "../App";
 import LogOut from "../pages/Logout";
+import Home from "../pages/Home";
 
 interface AppPage {
   url: string;
@@ -63,19 +65,19 @@ export const appPages: AppPage[] = [
     mdIcon: personCircle,
   },
   {
-    title: "Todo List",
-    url: "archived",
-    iosIcon: archiveOutline,
-    component: Contact, //laitetaan lindan todo
-    mdIcon: archiveSharp,
-  },
-  {
     title: "Log out",
     url: "logout",
-    iosIcon: archiveOutline,
+    iosIcon: listCircleOutline,
     component: LogOut,
-    mdIcon: archiveSharp,
+    mdIcon: listCircleOutline,
     hideWhenUserIsNotLoggedIn: true,
+  },
+  {
+    title: "ToDo",
+    url: "home",
+    iosIcon: archiveOutline,
+    component: Home,
+    mdIcon: archiveSharp,
   },
 ];
 const Menu: React.FC = () => {
