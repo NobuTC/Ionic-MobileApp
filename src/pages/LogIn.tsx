@@ -34,7 +34,7 @@ const LogIn: React.FC = () => {
         if (user && myUser?.setIsLoggedIn) {
           myUser.setIsLoggedIn(true);
           console.log("logged in", user);
-          history.replace("/");
+          history.replace("/page/home");
         }
       })
       .catch((error) => {
