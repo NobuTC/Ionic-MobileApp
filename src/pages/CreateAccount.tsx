@@ -7,12 +7,17 @@ import {
   IonToolbar,
   IonInput,
   IonText,
+  IonImg,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/react";
 import "./CreateAccount.css";
 import { useContext, useState } from "react";
 import { UserContext } from "../App";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useHistory } from "react-router";
+import useradd from "../images/useradd.png";
 
 const CreateAccount: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -51,6 +56,19 @@ const CreateAccount: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
+        <IonGrid>
+          <IonRow class="ion-justify-content-center">
+            <IonCol></IonCol>
+            <IonCol>
+              <IonImg
+                className="pictures"
+                src={useradd}
+                alt="UserPicture"
+              ></IonImg>
+            </IonCol>
+            <IonCol></IonCol>
+          </IonRow>
+        </IonGrid>
         <IonInput
           placeholder="Email"
           type="email"

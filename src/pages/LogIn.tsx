@@ -9,12 +9,15 @@ import {
   IonText,
   IonRow,
   IonCol,
+  IonGrid,
+  IonImg,
 } from "@ionic/react";
 import "./LogIn.css";
 import { useState, useContext } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from "../App";
 import { useHistory } from "react-router";
+import user from "../images/user.png";
 
 const LogIn: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -60,6 +63,19 @@ const LogIn: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
+        <IonGrid>
+          <IonRow class="ion-justify-content-center">
+            <IonCol></IonCol>
+            <IonCol>
+              <IonImg
+                className="pictures"
+                src={user}
+                alt="UserPicture"
+              ></IonImg>
+            </IonCol>
+            <IonCol></IonCol>
+          </IonRow>
+        </IonGrid>
         <IonInput
           placeholder="Email"
           type="email"
