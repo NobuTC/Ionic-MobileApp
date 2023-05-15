@@ -7,6 +7,8 @@ import {
   IonToolbar,
   IonInput,
   IonText,
+  IonRow,
+  IonCol,
 } from "@ionic/react";
 import "./LogIn.css";
 import { useState, useContext } from "react";
@@ -73,10 +75,21 @@ const LogIn: React.FC = () => {
             <p>Incorrect password! </p>
           </IonText>
         )}
-        <IonButton onClick={whenClickOnLoginButton}>Sign in</IonButton>
-        <IonButton onClick={whenClickOnSignUpButton}>Sign up</IonButton>
 
-        <IonButton onClick={whenClickOnContactUsButton}>Contact Us</IonButton>
+        <IonButton onClick={whenClickOnLoginButton}>Sign in</IonButton>
+
+        <IonRow>
+          <IonCol>
+            <IonButton fill="clear" onClick={whenClickOnContactUsButton}>
+              Contact Us
+            </IonButton>
+          </IonCol>
+          <IonCol>
+            <IonButton fill="clear" onClick={whenClickOnSignUpButton}>
+              Sign up
+            </IonButton>
+          </IonCol>
+        </IonRow>
       </IonContent>
     </IonPage>
   );

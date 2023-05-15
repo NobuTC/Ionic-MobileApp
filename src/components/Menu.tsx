@@ -14,12 +14,11 @@ import { useLocation } from "react-router-dom";
 import {
   archiveOutline,
   archiveSharp,
-  heartOutline,
-  heartSharp,
   mailOutline,
   mailSharp,
   paperPlaneOutline,
   paperPlaneSharp,
+  personCircle,
 } from "ionicons/icons";
 import "./Menu.css";
 import LogIn from "../pages/LogIn";
@@ -59,9 +58,9 @@ export const appPages: AppPage[] = [
   {
     title: "Contact",
     url: "contact",
-    iosIcon: heartOutline,
+    iosIcon: personCircle,
     component: Contact,
-    mdIcon: heartSharp,
+    mdIcon: personCircle,
   },
   {
     title: "Todo List",
