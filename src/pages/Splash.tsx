@@ -1,17 +1,27 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonSpinner, useIonViewDidEnter, } from '@ionic/react';
-import { useParams } from 'react-router';
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonSpinner,
+  useIonViewDidEnter,
+} from "@ionic/react";
+import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import './Splash.css';
+import "./Splash.css";
 
 const Splash: React.FC = () => {
   //2 seconds after loading user is sent to '/' route.
   const history = useHistory();
   useIonViewDidEnter(() => {
     setTimeout(() => {
-    history.push("/");
+      history.replace("/page/login");
     }, 2000);
   });
-  const { name } = useParams<{ name: string; }>();
+  const { name } = useParams<{ name: string }>();
 
   return (
     <IonPage>
@@ -26,8 +36,8 @@ const Splash: React.FC = () => {
 
       <IonContent fullscreen>
         <div className="flex-center">
-            Welcome, loading your page
-            <IonSpinner name="dots"></IonSpinner>
+          Welcome, loading your page
+          <IonSpinner name="dots"></IonSpinner>
         </div>
         <IonHeader collapse="condense">
           <IonToolbar>

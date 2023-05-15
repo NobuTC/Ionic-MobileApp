@@ -69,13 +69,10 @@ const App: React.FC = () => {
             <IonRouterOutlet id="main">
               <Route path="/" exact={true}>
                 {/* Laitetaan lindan todo list tähän, jotta kirjautunut ja registöröinnyt henkilö pääsee suoraan todo list */}
-                <Redirect to="/page/contact" />
+                <Splash />
               </Route>
               <Route path="/page/:name" exact={true}>
                 <Page />
-              </Route>
-              <Route path="/Splash" exact={true}>
-                <Splash />
               </Route>
               <Route path="/Contact" exact={true}>
                 <Contact />
