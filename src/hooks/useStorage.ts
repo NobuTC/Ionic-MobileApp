@@ -41,7 +41,6 @@ export function useStorage(){
         }
         const updatedTodos = [...todos, newTodo]
         setTodos(updatedTodos)
-        console.log(updatedTodos);
         store?.set(TODOS_KEY, updatedTodos);
     }
 

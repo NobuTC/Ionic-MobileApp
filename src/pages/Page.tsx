@@ -13,7 +13,6 @@ import { appPages } from "../components/Menu";
 
 const Page: React.FC = () => {
   const { name } = useParams<{ name: string }>();
-  console.log("name", name);
 
   const page = appPages.find((appPage) => {
     return appPage.url === name;
